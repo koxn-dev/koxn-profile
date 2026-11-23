@@ -8,7 +8,7 @@
   <title>koxn — developer / curious mind</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700;800&family=Noto+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700;800&family=Noto+Sans+JP:wght@400;500;600;700&family=Space+Grotesk:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
     :root {
       color-scheme: dark;
@@ -22,6 +22,7 @@
       --muted: #87958a;
       --mono: "DM Mono", "SFMono-Regular", Consolas, monospace;
       --sans: Inter, "Noto Sans JP", sans-serif;
+      --display: "Space Grotesk", "Noto Sans JP", sans-serif;
     }
     * { box-sizing: border-box; }
     html { scroll-behavior: smooth; }
@@ -132,6 +133,97 @@
     @media (prefers-reduced-motion: reduce) {
       html { scroll-behavior: auto; }
       *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+    }
+    /* Typography system: display / reading / terminal */
+    body {
+      font-size: 15px;
+      line-height: 1.85;
+      letter-spacing: .012em;
+      font-feature-settings: "kern" 1;
+      -webkit-font-smoothing: antialiased;
+      text-rendering: optimizeLegibility;
+    }
+    .hero h1,
+    .section-heading h2,
+    .skill h3,
+    .project h3,
+    .contact-box h3 {
+      font-family: var(--display);
+      font-optical-sizing: auto;
+    }
+    .hero h1 {
+      font-size: clamp(58px, 8.2vw, 90px);
+      line-height: .99;
+      letter-spacing: -.075em;
+      font-weight: 700;
+    }
+    .lead {
+      font-size: 15.5px;
+      line-height: 2;
+      letter-spacing: .018em;
+    }
+    .eyebrow {
+      font-size: 10px;
+      letter-spacing: .16em;
+      font-weight: 500;
+    }
+    .nav a {
+      font-size: 11px;
+      letter-spacing: .045em;
+    }
+    .section-heading h2 {
+      font-size: 27px;
+      line-height: 1.4;
+      letter-spacing: .015em;
+      font-weight: 600;
+    }
+    .about-box {
+      padding: 27px 29px;
+    }
+    .about-box p {
+      font-size: 14.5px;
+      line-height: 2.1;
+      letter-spacing: .025em;
+    }
+    .skill h3 {
+      font-size: 15px;
+      line-height: 1.5;
+      letter-spacing: .005em;
+    }
+    .skill p {
+      font-size: 12px;
+      line-height: 1.75;
+      letter-spacing: .015em;
+    }
+    .project h3 {
+      font-size: 17px;
+      line-height: 1.45;
+      letter-spacing: .005em;
+    }
+    .project p {
+      font-size: 12.5px;
+      line-height: 1.85;
+      letter-spacing: .015em;
+    }
+    .contact-box h3 {
+      font-size: 19px;
+      line-height: 1.45;
+      letter-spacing: -.025em;
+    }
+    .term-line,
+    .term-input,
+    .term-input-row label {
+      font-variant-ligatures: none;
+    }
+    @media (max-width: 480px) {
+      body { font-size: 14px; }
+      .hero h1 { font-size: clamp(55px, 12vw, 72px); }
+      .lead { font-size: 14px; line-height: 1.95; }
+      .section-heading h2 { font-size: 24px; }
+      .about-box { padding: 21px 19px; }
+      .about-box p { font-size: 13.5px; line-height: 2; }
+      .skill h3 { font-size: 14px; }
+      .project h3 { font-size: 16px; }
     }
   </style>
 </head>
