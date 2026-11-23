@@ -3,104 +3,362 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="theme-color" content="#080b14">
+  <meta name="theme-color" content="#090c0a">
   <meta name="description" content="koxn — 技術や科学が好き。気になったことを調べたり、実際に作ったりしています。">
-  <title>koxn — Personal Portfolio</title>
+  <title>koxn — developer / curious mind</title>
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Inter:wght@400;500;600;700;800&family=Noto+Sans+JP:wght@400;500;600;700&display=swap" rel="stylesheet">
   <style>
-    :root{color-scheme:dark;--bg:#080b14;--panel:#101625;--line:rgba(160,185,225,.14);--text:#edf3ff;--muted:#9aa8bf;--cyan:#67e8f9;--violet:#a78bfa;--mono:"DM Mono",monospace}
-    *{box-sizing:border-box}html{scroll-behavior:smooth}body{margin:0;background:radial-gradient(ellipse at 75% 5%,rgba(89,75,180,.18),transparent 34%),radial-gradient(ellipse at 8% 35%,rgba(28,166,190,.10),transparent 32%),var(--bg);color:var(--text);font-family:Inter,"Noto Sans JP",sans-serif;line-height:1.7}
-    a{color:inherit;text-decoration:none}.wrap{width:min(1060px,calc(100% - 44px));margin:auto}.mono,.eyebrow,.nav-mark,.tag,.project-link{font-family:var(--mono)}.topbar{height:76px;display:flex;align-items:center;justify-content:space-between;border-bottom:1px solid var(--line)}.nav-mark{font-size:20px;font-weight:500;letter-spacing:-1px}.nav-mark span{color:var(--cyan)}nav{display:flex;gap:27px;color:var(--muted);font-size:13px}nav a:hover,.text-link:hover{color:var(--cyan)}
-    .hero{min-height:570px;display:grid;grid-template-columns:1.2fr .8fr;align-items:center;gap:45px;padding:82px 0 95px}.eyebrow{font-size:11px;letter-spacing:2px;color:var(--cyan);text-transform:uppercase}.hero h1{font-size:clamp(54px,9vw,100px);line-height:.98;letter-spacing:-.075em;margin:23px 0 24px}.hero h1 span{background:linear-gradient(100deg,var(--cyan),#a5b4fc 65%,var(--violet));-webkit-background-clip:text;background-clip:text;color:transparent}.lead{max-width:520px;color:#b7c3d8;font-size:16px}.actions{display:flex;gap:13px;flex-wrap:wrap;margin-top:32px}.btn{display:inline-flex;align-items:center;gap:9px;border:1px solid var(--line);border-radius:8px;padding:11px 17px;font-size:13px;font-weight:600;transition:.2s}.btn.primary{background:linear-gradient(110deg,#67e8f9,#a5b4fc);color:#07101b;border:0}.btn:hover{transform:translateY(-2px);border-color:var(--cyan)}
-    .visual{height:330px;position:relative;display:grid;place-items:center}.orb{width:235px;height:235px;border-radius:50%;background:radial-gradient(circle at 32% 28%,#d7fbff 0,#69ddec 8%,#6177d7 38%,#302b70 66%,#101625 78%);box-shadow:0 0 65px rgba(103,232,249,.18),0 0 150px rgba(167,139,250,.17);filter:saturate(.9)}.ring{position:absolute;width:310px;height:110px;border:1px solid rgba(103,232,249,.35);border-radius:50%;transform:rotate(-28deg)}.ring.two{width:350px;height:145px;transform:rotate(42deg);border-color:rgba(167,139,250,.3)}.cross{position:absolute;width:9px;height:9px;border:1px solid var(--cyan);transform:rotate(45deg);top:37px;right:38px}.cross:after{content:"";position:absolute;width:25px;height:1px;background:var(--cyan);top:3px;left:-9px;transform:rotate(45deg)}
-    section{padding:68px 0;border-top:1px solid var(--line)}.section-head{display:flex;align-items:end;justify-content:space-between;gap:20px;margin-bottom:30px}.section-head h2{font-size:27px;letter-spacing:-1px;margin:7px 0 0}.section-note{color:var(--muted);font-size:12px}.about-card,.project-card,.interest{background:linear-gradient(145deg,rgba(19,28,45,.92),rgba(12,17,29,.88));border:1px solid var(--line);border-radius:13px}.about-card{padding:28px 30px;color:#bdc9dc}.about-card p{margin:0;max-width:760px}.grid{display:grid;grid-template-columns:repeat(3,1fr);gap:13px}.interest{padding:21px;min-height:128px}.interest .num{font:11px var(--mono);color:var(--cyan)}.interest h3{font-size:15px;margin:15px 0 0}.projects{display:grid;grid-template-columns:repeat(2,1fr);gap:15px}.project-card{padding:23px;display:flex;flex-direction:column;min-height:175px;transition:.2s}.project-card:hover{transform:translateY(-3px);border-color:rgba(103,232,249,.4)}.project-top{display:flex;justify-content:space-between;color:var(--cyan);font:11px var(--mono)}.project-card h3{font-size:18px;margin:19px 0 5px}.project-card p{font-size:13px;color:var(--muted);margin:0 0 18px}.project-link{font-size:11px;color:var(--cyan);margin-top:auto}.empty{grid-column:1/-1;color:var(--muted);border:1px dashed var(--line);padding:22px;border-radius:12px;font-size:13px}
-    .contact{display:flex;align-items:center;justify-content:space-between;gap:20px;padding:27px;border:1px solid var(--line);border-radius:13px;background:linear-gradient(110deg,rgba(103,232,249,.07),rgba(167,139,250,.07))}.contact h3{margin:0 0 4px;font-size:18px}.contact p{margin:0;color:var(--muted);font-size:13px}.footer{padding:28px 0 38px;display:flex;justify-content:space-between;color:#75839a;font:11px var(--mono)}
-    @media(max-width:720px){.wrap{width:min(100% - 34px,540px)}.topbar{height:66px}nav{gap:14px;font-size:11px}.hero{grid-template-columns:1fr;padding:74px 0 58px;gap:15px}.hero h1{font-size:76px}.visual{height:245px;grid-row:1}.orb{width:165px;height:165px}.ring{width:235px;height:85px}.ring.two{width:265px;height:110px}.cross{top:20px;right:30px}.lead{font-size:14px}.grid{grid-template-columns:repeat(2,1fr)}.projects{grid-template-columns:1fr}.section-head{align-items:start;flex-direction:column}.contact{align-items:start;flex-direction:column}.footer{gap:10px;flex-direction:column}}
-    @media(max-width:390px){nav{gap:9px}.hero h1{font-size:65px}.grid{grid-template-columns:1fr}}
-    @media(prefers-reduced-motion:reduce){html{scroll-behavior:auto}*,*:before,*:after{transition:none!important}}
+    :root {
+      color-scheme: dark;
+      --bg: #090c0a;
+      --panel: #0e130f;
+      --panel-2: #111a13;
+      --line: rgba(153, 255, 167, .16);
+      --green: #9bffa8;
+      --green-dim: #5fc878;
+      --text: #e9f1e9;
+      --muted: #87958a;
+      --mono: "DM Mono", "SFMono-Regular", Consolas, monospace;
+      --sans: Inter, "Noto Sans JP", sans-serif;
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      color: var(--text);
+      background:
+        radial-gradient(ellipse at 50% -20%, rgba(63, 150, 76, .13), transparent 55%),
+        linear-gradient(rgba(120, 190, 125, .025) 1px, transparent 1px),
+        linear-gradient(90deg, rgba(120, 190, 125, .025) 1px, transparent 1px),
+        var(--bg);
+      background-size: auto, 36px 36px, 36px 36px, auto;
+      font: 15px/1.75 var(--sans);
+      min-height: 100vh;
+    }
+    a { color: inherit; text-decoration: none; }
+    button, input { font: inherit; }
+    button, a { -webkit-tap-highlight-color: transparent; }
+    ::selection { color: #071009; background: var(--green); }
+    .wrap { width: min(1080px, calc(100% - 44px)); margin: 0 auto; }
+    .mono, .brand, .nav a, .eyebrow, .terminal, .tag, .meta, .footer, .section-index { font-family: var(--mono); }
+    .topbar {
+      height: 76px; display: flex; align-items: center; justify-content: space-between;
+      border-bottom: 1px solid var(--line);
+    }
+    .brand { font-size: 17px; letter-spacing: -.8px; font-weight: 500; }
+    .brand .prompt { color: var(--green); }
+    .nav { display: flex; align-items: center; gap: 25px; }
+    .nav a { color: var(--muted); font-size: 12px; transition: color .2s; }
+    .nav a:hover, .nav a:focus-visible { color: var(--green); }
+    .nav .github-link { color: var(--green); border: 1px solid var(--line); padding: 7px 11px; border-radius: 5px; }
+    .hero { padding: 88px 0 80px; display: grid; grid-template-columns: .9fr 1.1fr; gap: 46px; align-items: center; }
+    .eyebrow { color: var(--green); font-size: 11px; letter-spacing: 1.8px; text-transform: uppercase; }
+    .hero h1 { font-size: clamp(52px, 8vw, 86px); letter-spacing: -.085em; line-height: 1.02; margin: 18px 0 20px; font-weight: 800; }
+    .hero h1 .accent { color: var(--green); text-shadow: 0 0 35px rgba(155,255,168,.2); }
+    .lead { max-width: 450px; color: #b5c1b7; font-size: 15px; }
+    .lead .code { color: var(--green); font-family: var(--mono); font-size: 13px; }
+    .hero-actions { display: flex; align-items: center; gap: 12px; flex-wrap: wrap; margin-top: 27px; }
+    .btn { display: inline-flex; align-items: center; gap: 9px; border: 1px solid var(--line); border-radius: 5px; padding: 10px 14px; font: 12px var(--mono); transition: .2s ease; }
+    .btn.primary { color: #071009; background: var(--green); border-color: var(--green); font-weight: 500; }
+    .btn:hover { transform: translateY(-2px); border-color: var(--green); }
+    .btn:not(.primary):hover { color: var(--green); }
+    .terminal {
+      background: rgba(8, 13, 9, .94); border: 1px solid rgba(155,255,168,.25);
+      border-radius: 9px; overflow: hidden; box-shadow: 0 18px 70px rgba(0,0,0,.35), 0 0 45px rgba(77,170,91,.07);
+      position: relative;
+    }
+    .terminal:after { content: ""; pointer-events: none; position: absolute; inset: 0; opacity: .13; background: repeating-linear-gradient(to bottom, transparent 0, transparent 3px, rgba(170,255,180,.06) 4px); }
+    .terminal-bar { height: 42px; background: #121a13; border-bottom: 1px solid var(--line); display: flex; align-items: center; justify-content: space-between; padding: 0 14px; color: var(--muted); font-size: 11px; }
+    .window-dots { display: flex; gap: 6px; }
+    .window-dots i { width: 8px; height: 8px; border-radius: 50%; background: #536454; display: block; }
+    .window-dots i:first-child { background: #e18b70; }.window-dots i:nth-child(2) { background: #d8b66c; }.window-dots i:nth-child(3) { background: #81c88b; }
+    .terminal-body { position: relative; z-index: 1; padding: 20px 21px 17px; min-height: 286px; }
+    .term-line { color: #b4c4b5; font-size: 12px; line-height: 1.9; overflow-wrap: anywhere; }
+    .term-line .prompt { color: var(--green); }
+    .term-line .dim { color: #78877a; }
+    .term-line .good { color: var(--green); }
+    .term-line .value { color: #e8eee8; }
+    .term-spacer { height: 10px; }
+    .term-input-row { display: flex; gap: 9px; align-items: center; margin-top: 13px; border-top: 1px solid rgba(155,255,168,.12); padding-top: 13px; }
+    .term-input-row label { white-space: nowrap; color: var(--green); font-size: 12px; }
+    .term-input { width: 100%; min-width: 0; border: 0; outline: 0; color: var(--text); background: transparent; caret-color: var(--green); font: 12px var(--mono); }
+    .term-input::placeholder { color: #536254; }
+    .cursor { display: inline-block; width: 7px; height: 14px; vertical-align: -2px; background: var(--green); animation: blink 1.1s steps(2,start) infinite; }
+    @keyframes blink { to { visibility: hidden; } }
+    .term-hint { margin-top: 10px; color: #68776b; font-size: 10px; }
+    .term-hint button { border: 0; background: none; padding: 0; color: #a1b2a3; font: inherit; cursor: pointer; }
+    .term-hint button:hover { color: var(--green); }
+    section.content-section { padding: 64px 0; border-top: 1px solid var(--line); scroll-margin-top: 20px; }
+    .section-heading { display: flex; align-items: end; justify-content: space-between; gap: 20px; margin-bottom: 25px; }
+    .section-heading h2 { margin: 5px 0 0; font-size: 25px; letter-spacing: -.8px; }
+    .section-index { color: #68796b; font-size: 11px; }
+    .about-box { border: 1px solid var(--line); border-radius: 7px; padding: 25px 27px; background: linear-gradient(120deg, rgba(18,28,19,.9), rgba(11,16,12,.85)); color: #bdc9be; }
+    .about-box p { max-width: 800px; margin: 0; }
+    .about-box strong { color: var(--green); font-weight: 500; }
+    .skills-grid { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; }
+    .skill { border: 1px solid var(--line); border-radius: 6px; background: rgba(13,20,14,.82); padding: 18px 19px; min-height: 112px; transition: border-color .2s, transform .2s; }
+    .skill:hover { border-color: rgba(155,255,168,.42); transform: translateY(-2px); }
+    .skill-code { color: var(--green); font: 10px var(--mono); }
+    .skill h3 { margin: 11px 0 0; font-size: 14px; font-weight: 600; }
+    .skill p { margin: 3px 0 0; color: var(--muted); font-size: 11px; }
+    .projects-grid { display: grid; grid-template-columns: repeat(2, 1fr); gap: 13px; }
+    .project { min-height: 156px; border: 1px solid var(--line); border-radius: 6px; background: rgba(13,20,14,.82); padding: 19px; display: flex; flex-direction: column; transition: border-color .2s, transform .2s; }
+    .project:hover { border-color: rgba(155,255,168,.42); transform: translateY(-2px); }
+    .project-meta { display: flex; justify-content: space-between; color: var(--green); font: 10px var(--mono); }
+    .project h3 { font-size: 16px; margin: 16px 0 5px; }
+    .project p { color: var(--muted); font-size: 12px; margin: 0 0 15px; }
+    .project a { color: var(--green); font: 10px var(--mono); margin-top: auto; width: fit-content; }
+    .empty-projects { grid-column: 1 / -1; border: 1px dashed rgba(155,255,168,.23); padding: 22px; border-radius: 6px; color: var(--muted); font: 12px/1.9 var(--mono); }
+    .contact-box { display: flex; align-items: center; justify-content: space-between; gap: 20px; border: 1px solid var(--line); border-radius: 7px; padding: 23px 25px; background: linear-gradient(100deg, rgba(37,83,43,.16), rgba(11,16,12,.65)); }
+    .contact-box h3 { margin: 0 0 3px; font-size: 17px; }.contact-box p { color: var(--muted); font-size: 12px; margin: 0; }
+    .footer { border-top: 1px solid var(--line); margin-top: 60px; padding: 22px 0 29px; display: flex; justify-content: space-between; gap: 16px; color: #718073; font-size: 10px; }
+    .footer .status { color: var(--green-dim); }
+    @media (max-width: 780px) {
+      .wrap { width: min(100% - 34px, 600px); }
+      .hero { grid-template-columns: 1fr; padding: 58px 0 55px; gap: 28px; }
+      .hero h1 { font-size: clamp(56px, 12vw, 76px); }
+      .terminal-body { min-height: 0; }
+      .skills-grid { grid-template-columns: repeat(2, 1fr); }
+    }
+    @media (max-width: 480px) {
+      .topbar { height: 66px; }.nav { gap: 12px; }.nav a { font-size: 10px; }.nav .github-link { padding: 6px 8px; }
+      .hero { padding-top: 45px; }.lead { font-size: 14px; }.terminal-body { padding: 15px 14px; }
+      .term-line { font-size: 10px; }.skills-grid { gap: 9px; }.skill { padding: 15px; min-height: 105px; }
+      .projects-grid { grid-template-columns: 1fr; }.section-heading { align-items: start; flex-direction: column; gap: 5px; }
+      .contact-box { align-items: start; flex-direction: column; }.footer { flex-direction: column; }
+    }
+    @media (prefers-reduced-motion: reduce) {
+      html { scroll-behavior: auto; }
+      *, *::before, *::after { animation-duration: .01ms !important; animation-iteration-count: 1 !important; transition-duration: .01ms !important; }
+    }
   </style>
 </head>
 <body>
   <div class="wrap">
     <header class="topbar">
-      <a class="nav-mark" href="#" aria-label="koxn home">koxn<span>.</span></a>
-      <nav aria-label="メインナビゲーション"><a href="#about">ABOUT</a><a href="#interests">INTERESTS</a><a href="#projects">PROJECTS</a></nav>
+      <a class="brand" href="#" aria-label="koxn home"><span class="prompt">~/</span>koxn</a>
+      <nav class="nav" aria-label="メインナビゲーション">
+        <a href="#about">about</a><a href="#interests">interests</a><a href="#projects">projects</a>
+        <a class="github-link" href="https://github.com/koxn-dev" target="_blank" rel="noopener noreferrer">GitHub ↗</a>
+      </nav>
     </header>
+
     <main>
-      <section class="hero" style="border:0">
+      <section class="hero" aria-labelledby="hero-title">
         <div>
-          <div class="eyebrow">Curiosity-driven / Technology &amp; Science</div>
-          <h1>Hi, I'm<br><span>koxn.</span></h1>
-          <p class="lead">技術や科学が好き。気になったことを調べたり、実際に作ったりしています。</p>
-          <div class="actions"><a class="btn primary" href="#projects">Explore projects <span aria-hidden="true">↗</span></a><a class="btn" href="https://github.com/koxn-dev" target="_blank" rel="noopener noreferrer">GitHub ↗</a></div>
+          <div class="eyebrow">// developer profile · 2026</div>
+          <h1 id="hero-title">Hello,<br>I'm <span class="accent">koxn</span><span class="cursor" aria-hidden="true"></span></h1>
+          <p class="lead">技術や科学が好き。気になったことを調べたり、実際に作ったりしています。<br><span class="code">while (curious) { keep_building(); }</span></p>
+          <div class="hero-actions">
+            <a class="btn primary" href="#projects">ls ./projects <span aria-hidden="true">↘</span></a>
+            <a class="btn" href="https://github.com/koxn-dev" target="_blank" rel="noopener noreferrer">git profile ↗</a>
+          </div>
         </div>
-        <div class="visual" aria-hidden="true"><div class="ring"></div><div class="ring two"></div><div class="orb"></div><div class="cross"></div></div>
-      </section>
-      <section id="about">
-        <div class="section-head"><div><div class="eyebrow">01 / About</div><h2>好奇心を、かたちに。</h2></div><div class="section-note">A little introduction</div></div>
-        <div class="about-card"><p>こんにちは、<strong>koxn</strong> です。技術や科学に興味があり、面白そうだと思ったことを調べたり、試したり、ものづくりにつなげたりしています。このサイトでは、興味のある分野や制作物を紹介していきます。</p></div>
-      </section>
-      <section id="interests">
-        <div class="section-head"><div><div class="eyebrow">02 / Interests</div><h2>Curious about</h2></div><div class="section-note">Things I like to explore</div></div>
-        <div class="grid">
-          <article class="interest"><div class="num">01 / CODE</div><h3>Programming</h3></article>
-          <article class="interest"><div class="num">02 / WEB</div><h3>Web Development</h3></article>
-          <article class="interest"><div class="num">03 / AI</div><h3>AI &amp; Machine Learning</h3></article>
-          <article class="interest"><div class="num">04 / PLAY</div><h3>Game Development</h3></article>
-          <article class="interest"><div class="num">05 / DESIGN</div><h3>Design</h3></article>
-          <article class="interest"><div class="num">06 / SCIENCE</div><h3>Science &amp; Technology</h3></article>
+
+        <div class="terminal" aria-label="コマンドを試せるプロフィールターミナル">
+          <div class="terminal-bar">
+            <div class="window-dots" aria-hidden="true"><i></i><i></i><i></i></div>
+            <span>visitor@koxn: ~/profile</span>
+            <span>zsh</span>
+          </div>
+          <div class="terminal-body">
+            <div id="terminal-output" aria-live="polite" aria-relevant="additions">
+              <div class="term-line"><span class="good">✔</span> profile loaded successfully</div>
+              <div class="term-line"><span class="dim">#</span> Welcome to koxn's corner of the internet.</div>
+              <div class="term-line"><span class="dim">#</span> Type <span class="good">help</span> to see available commands.</div>
+              <div class="term-spacer"></div>
+              <div class="term-line"><span class="prompt">visitor@koxn</span><span class="dim">:</span><span class="good">~</span><span class="dim">$</span> whoami</div>
+              <div class="term-line"><span class="value">A curious person exploring tech &amp; science.</span></div>
+            </div>
+            <form class="term-input-row" id="terminal-form" autocomplete="off">
+              <label for="terminal-input">visitor@koxn:~$</label>
+              <input id="terminal-input" class="term-input" type="text" name="command" placeholder="type 'help'..." autocapitalize="off" spellcheck="false" aria-label="ターミナルコマンド">
+            </form>
+            <div class="term-hint">try: <button type="button" data-command="help">help</button> · <button type="button" data-command="about">about</button> · <button type="button" data-command="skills">skills</button> · <button type="button" data-command="projects">projects</button></div>
+          </div>
         </div>
       </section>
-      <section id="projects">
-        <div class="section-head"><div><div class="eyebrow">03 / Projects</div><h2>Selected works</h2></div><div class="section-note">Things I've made &amp; explored</div></div>
-        <div class="projects" id="project-list"></div>
+
+      <section class="content-section" id="about">
+        <div class="section-heading">
+          <div><div class="eyebrow">// 01 · about</div><h2>人となり</h2></div>
+          <div class="section-index">./about.md</div>
+        </div>
+        <div class="about-box">
+          <p>こんにちは、<strong>koxn</strong> です。技術や科学に興味があり、面白そうだと思ったことを調べたり、試したり、ものづくりにつなげたりしています。知らない仕組みを理解して、自分の手で形にしていくことが好きです。</p>
+        </div>
       </section>
-      <section id="contact">
-        <div class="contact"><div><h3>Find me on GitHub.</h3><p>制作物やコードはGitHubにも載せています。</p></div><a class="btn primary" href="https://github.com/koxn-dev" target="_blank" rel="noopener noreferrer">Visit GitHub ↗</a></div>
+
+      <section class="content-section" id="interests">
+        <div class="section-heading">
+          <div><div class="eyebrow">// 02 · interests</div><h2>興味のある分野</h2></div>
+          <div class="section-index">cat interests.json</div>
+        </div>
+        <div class="skills-grid">
+          <article class="skill"><div class="skill-code">01 / CODE</div><h3>Programming</h3><p>コードでアイデアを形にする</p></article>
+          <article class="skill"><div class="skill-code">02 / WEB</div><h3>Web Development</h3><p>Webの仕組みと表現</p></article>
+          <article class="skill"><div class="skill-code">03 / AI</div><h3>AI &amp; Machine Learning</h3><p>知能や学習のしくみ</p></article>
+          <article class="skill"><div class="skill-code">04 / GAME</div><h3>Game Development</h3><p>遊びをつくる技術</p></article>
+          <article class="skill"><div class="skill-code">05 / UI</div><h3>Design</h3><p>使いやすさと見た目</p></article>
+          <article class="skill"><div class="skill-code">06 / LAB</div><h3>Science &amp; Technology</h3><p>好奇心から探究する</p></article>
+        </div>
+      </section>
+
+      <section class="content-section" id="projects">
+        <div class="section-heading">
+          <div><div class="eyebrow">// 03 · projects</div><h2>制作物・活動</h2></div>
+          <div class="section-index">ls -la ./projects</div>
+        </div>
+        <div class="projects-grid" id="project-list"></div>
+      </section>
+
+      <section class="content-section" id="contact">
+        <div class="contact-box">
+          <div><h3>Find me on GitHub.</h3><p>コードや制作物はこちらにまとめています。</p></div>
+          <a class="btn primary" href="https://github.com/koxn-dev" target="_blank" rel="noopener noreferrer">open github ↗</a>
+        </div>
       </section>
     </main>
-    <footer class="footer"><span>© <span id="year"></span> KOXN</span><span>BUILT WITH CURIOSITY.</span></footer>
+
+    <footer class="footer">
+      <span>© <span id="year"></span> koxn · built with curiosity</span>
+      <span class="status">● ALL SYSTEMS NOMINAL</span>
+    </footer>
   </div>
+
   <script>
-    // 制作物を追加するときは、この配列に1件ずつ追加してください。
-    // url は公開URL、description は短い説明です。まだない場合は空配列 [] のままでOK。
+    // ============================================================
+    // 制作物の追加・編集はここだけでOKです。
+    // title: 表示名 / description: 説明 / url: リンク / tag: 分類ラベル
+    // ============================================================
     const PROJECTS = [
-      // { title: "Project name", description: "What it does.", url: "https://example.com", tag: "WEB" },
+      // { title: "Project name", description: "作品の説明を書きます。", url: "https://example.com", tag: "WEB" },
     ];
 
-    const list = document.getElementById("project-list");
+    const projectList = document.getElementById("project-list");
     if (PROJECTS.length === 0) {
-      list.innerHTML = '<div class="empty">Projects are coming soon.\nここに制作物を追加していきます。</div>';
+      const empty = document.createElement("div");
+      empty.className = "empty-projects";
+      empty.textContent = ">> No projects listed yet.\n>> 新しい制作物をここに追加していきます。";
+      projectList.append(empty);
     } else {
       PROJECTS.forEach((project, index) => {
         const card = document.createElement("article");
-        card.className = "project-card";
-        const top = document.createElement("div");
-        top.className = "project-top";
+        card.className = "project";
+        const meta = document.createElement("div");
+        meta.className = "project-meta";
         const tag = document.createElement("span");
         tag.textContent = project.tag || "PROJECT";
         const number = document.createElement("span");
         number.textContent = String(index + 1).padStart(2, "0");
-        top.append(tag, number);
+        meta.append(tag, number);
+
         const title = document.createElement("h3");
         title.textContent = project.title || "Untitled";
         const description = document.createElement("p");
         description.textContent = project.description || "";
-        card.append(top, title, description);
+        card.append(meta, title, description);
+
         if (project.url) {
           const link = document.createElement("a");
-          link.className = "project-link";
           link.href = project.url;
           link.target = "_blank";
           link.rel = "noopener noreferrer";
-          link.textContent = "VIEW PROJECT ↗";
+          link.textContent = "OPEN PROJECT ↗";
           card.append(link);
         }
-        list.append(card);
+        projectList.append(card);
       });
     }
+
+    const output = document.getElementById("terminal-output");
+    const input = document.getElementById("terminal-input");
+    const form = document.getElementById("terminal-form");
+
+    const commands = {
+      help: () => [
+        "Available commands:",
+        "  help      show this command list",
+        "  whoami    display the short intro",
+        "  about     jump to the about section",
+        "  skills    list areas of interest",
+        "  projects  show selected works",
+        "  github    open the GitHub profile",
+        "  clear     clear the terminal"
+      ],
+      whoami: () => ["koxn", "A curious person exploring tech & science."],
+      about: () => {
+        document.getElementById("about").scrollIntoView({ behavior: "smooth" });
+        return ["Opening ./about.md ..."];
+      },
+      skills: () => {
+        document.getElementById("interests").scrollIntoView({ behavior: "smooth" });
+        return ["Programming · Web · AI/ML · Game Dev · Design · Science & Tech"];
+      },
+      projects: () => {
+        document.getElementById("projects").scrollIntoView({ behavior: "smooth" });
+        return PROJECTS.length ? ["Found " + PROJECTS.length + " project(s)."] : ["No projects listed yet. Check back soon."];
+      },
+      github: () => {
+        window.open("https://github.com/koxn-dev", "_blank", "noopener,noreferrer");
+        return ["Opening github.com/koxn-dev ..."];
+      }
+    };
+
+    function addTerminalLine(text, className) {
+      const line = document.createElement("div");
+      line.className = "term-line" + (className ? " " + className : "");
+      line.textContent = text;
+      output.append(line);
+    }
+
+    function runCommand(rawCommand) {
+      const command = rawCommand.trim().toLowerCase();
+      if (!command) return;
+      const prompt = document.createElement("div");
+      prompt.className = "term-line";
+      const promptLabel = document.createElement("span");
+      promptLabel.className = "prompt";
+      promptLabel.textContent = "visitor@koxn";
+      const path = document.createElement("span");
+      path.className = "dim";
+      path.textContent = ":~$ ";
+      const value = document.createElement("span");
+      value.className = "value";
+      value.textContent = rawCommand;
+      prompt.append(promptLabel, path, value);
+      output.append(prompt);
+
+      if (command === "clear") {
+        output.replaceChildren();
+        return;
+      }
+      const handler = commands[command];
+      if (!handler) {
+        addTerminalLine("command not found: " + command + " (type 'help')", "dim");
+      } else {
+        handler().forEach(line => addTerminalLine(line));
+      }
+
+      while (output.children.length > 28) output.firstElementChild.remove();
+      output.parentElement.scrollTop = output.parentElement.scrollHeight;
+    }
+
+    form.addEventListener("submit", event => {
+      event.preventDefault();
+      runCommand(input.value);
+      input.value = "";
+    });
+
+    document.querySelectorAll("[data-command]").forEach(button => {
+      button.addEventListener("click", () => {
+        runCommand(button.dataset.command);
+        input.focus();
+      });
+    });
+
     document.getElementById("year").textContent = new Date().getFullYear();
   </script>
 </body>
