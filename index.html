@@ -225,6 +225,94 @@
       .skill h3 { font-size: 14px; }
       .project h3 { font-size: 16px; }
     }
+
+    /* Motion details: subtle, playful, and still easy on the eyes */
+    @keyframes riseIn {
+      from { opacity: 0; transform: translateY(18px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes glowPulse {
+      0%, 100% { text-shadow: 0 0 18px rgba(155,255,168,.16); }
+      50% { text-shadow: 0 0 34px rgba(155,255,168,.42), 0 0 60px rgba(95,200,120,.16); }
+    }
+    @keyframes scanDrift {
+      from { background-position: 0 0; }
+      to { background-position: 0 36px; }
+    }
+    @keyframes statusPulse {
+      0%, 100% { opacity: .72; box-shadow: 0 0 0 0 rgba(155,255,168,.28); }
+      50% { opacity: 1; box-shadow: 0 0 0 5px rgba(155,255,168,0); }
+    }
+    @keyframes terminalLineIn {
+      from { opacity: 0; transform: translateX(-5px); }
+      to { opacity: 1; transform: translateX(0); }
+    }
+    .hero > div:first-child > * {
+      animation: riseIn .72s cubic-bezier(.2,.75,.25,1) both;
+    }
+    .hero > div:first-child .eyebrow { animation-delay: .04s; }
+    .hero > div:first-child h1 { animation-delay: .12s; }
+    .hero > div:first-child .lead { animation-delay: .2s; }
+    .hero > div:first-child .hero-actions { animation-delay: .28s; }
+    .hero h1 .accent { animation: glowPulse 4.2s ease-in-out 1s infinite; }
+    .hero .terminal {
+      animation: riseIn .9s cubic-bezier(.2,.75,.25,1) .18s both;
+      transform-origin: 70% 50%;
+    }
+    .terminal:after { animation: scanDrift 12s linear infinite; }
+    .window-dots i:nth-child(3) { animation: statusPulse 2.8s ease-in-out infinite; }
+    #terminal-output .term-line { animation: terminalLineIn .22s ease-out both; }
+    .btn span { display: inline-block; transition: transform .2s ease; }
+    .btn:hover span { transform: translate(3px, -2px); }
+    .skill, .project {
+      position: relative;
+      overflow: hidden;
+      transition: border-color .25s ease, transform .25s cubic-bezier(.2,.75,.25,1), box-shadow .25s ease;
+    }
+    .skill::after, .project::after {
+      content: "";
+      position: absolute;
+      top: 0;
+      left: 0;
+      width: 2px;
+      height: 100%;
+      background: linear-gradient(transparent, var(--green), transparent);
+      opacity: 0;
+      transform: scaleY(.35);
+      transition: opacity .25s ease, transform .25s ease;
+      pointer-events: none;
+    }
+    .skill:hover, .project:hover {
+      border-color: rgba(155,255,168,.5);
+      box-shadow: 0 10px 30px rgba(0,0,0,.18), 0 0 24px rgba(95,200,120,.055);
+    }
+    .skill:hover::after, .project:hover::after {
+      opacity: .9;
+      transform: scaleY(1);
+    }
+    .project a { transition: letter-spacing .2s ease, text-shadow .2s ease; }
+    .project a:hover { letter-spacing: .06em; text-shadow: 0 0 12px rgba(155,255,168,.35); }
+    .brand { transition: color .2s ease, text-shadow .2s ease; }
+    .brand:hover { color: var(--green); text-shadow: 0 0 18px rgba(155,255,168,.35); }
+    .footer .status { display: inline-flex; align-items: center; gap: 7px; }
+    .status-light {
+      width: 7px;
+      height: 7px;
+      flex: 0 0 7px;
+      border-radius: 50%;
+      background: var(--green);
+      box-shadow: 0 0 10px rgba(155,255,168,.55);
+      animation: statusPulse 2.2s ease-in-out infinite;
+    }
+    .reveal {
+      opacity: 0;
+      transform: translateY(18px);
+      transition: opacity .65s ease var(--reveal-delay, 0ms), transform .65s cubic-bezier(.2,.75,.25,1) var(--reveal-delay, 0ms);
+    }
+    .reveal.is-visible { opacity: 1; transform: translateY(0); }
+    @media (hover: none) {
+      .skill:hover, .project:hover { transform: none; }
+    }
   </style>
 </head>
 <body>
@@ -316,7 +404,7 @@
 
     <footer class="footer">
       <span>© <span id="year"></span> koxn · built with curiosity</span>
-      <span class="status">● ALL SYSTEMS NOMINAL</span>
+      <span class="status"><span class="status-light" aria-hidden="true"></span>ALL SYSTEMS NOMINAL</span>
     </footer>
   </div>
 
@@ -450,6 +538,34 @@
         input.focus();
       });
     });
+
+    // Reveal content as it enters the viewport. Keep it visible for reduced-motion users.
+    const revealTargets = document.querySelectorAll(
+      ".content-section .section-heading, .about-box, .skill, .project, .contact-box"
+    );
+    const reduceMotion = window.matchMedia("(prefers-reduced-motion: reduce)").matches;
+
+    revealTargets.forEach((element, index) => {
+      element.classList.add("reveal");
+      if (element.matches(".skill, .project")) {
+        element.style.setProperty("--reveal-delay", (index % 3) * 75 + "ms");
+      }
+    });
+
+    if (reduceMotion || !("IntersectionObserver" in window)) {
+      revealTargets.forEach(element => element.classList.add("is-visible"));
+    } else {
+      const revealObserver = new IntersectionObserver((entries, observer) => {
+        entries.forEach(entry => {
+          if (entry.isIntersecting) {
+            entry.target.classList.add("is-visible");
+            observer.unobserve(entry.target);
+          }
+        });
+      }, { threshold: 0.12, rootMargin: "0px 0px -35px 0px" });
+
+      revealTargets.forEach(element => revealObserver.observe(element));
+    }
 
     document.getElementById("year").textContent = new Date().getFullYear();
   </script>
